@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Alya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div id="overlay-start">
+    <div class="intro-content">
+        <h2 style="font-family: 'Dancing Script', cursive; color: white;">Hai Alya... 🌸</h2>
+        <p style="color: white;">Ada sesuatu buat kamu.</p>
+        <button id="btn-start" onclick="mulaiSemuanya()">Buka Sekarang ✨</button>
+    </div>
+</div>
+
+<style>
+#overlay-start {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--color-pink); /* Warna tema kamu */
+    display: flex; justify-content: center; align-items: center;
+    z-index: 99999; /* Paling depan */
+    text-align: center;
+}
+#btn-start {
+    padding: 15px 30px;
+    background: white;
+    color: var(--color-text-pink);
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+</style>
+    <div id="wrapper">
+        <div class="flag__birthday">
+            <img src="./images/1.png" alt="" width="350" class="flag__left">
+            <img src="./images/1.png" alt="" width="350" class="flag__right">
+        </div>
+
+        <div class="content">
+            <div class="left">
+                <div class="title">
+                    <h1 class="happy">
+                        <span style="--t: 4s;">H</span><span style="--t: 4.2s;">a</span><span style="--t: 4.4s;">p</span><span style="--t: 4.6s;">p</span><span style="--t: 4.8s;">y</span>
+                    </h1>
+                    <h1 class="birthday">
+                        <span style="--t: 5s;">B</span><span style="--t: 5.2s;">i</span><span style="--t: 5.4s;">r</span><span style="--t: 5.6s;">t</span><span style="--t: 5.8s;">h</span><span style="--t: 6s;">d</span><span style="--t: 6.2s;">a</span><span style="--t: 6.4s;">y</span>
+                    </h1>
+                    <div class="hat"><img src="./images/hat.png" alt="" width="130"></div>
+                </div>
+                <div class="date__of__birth"><span></span></div>
+                <div class="btn">
+                    <button id="btn__letter">
+                        <div class="mail">Click Here Alya <i class="fa-regular fa-envelope"></i></div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="box__account">
+                    <div class="image"><img src="./images/unnamed.jpeg" alt="Birthday Person"></div>
+                    <div class="name">
+                        <i class="fa-solid fa-heart"></i><span>Dear Sarah Aulia Djafar</span><i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div class="balloon_one"><img width="100px" src="./images/balloon1.png" alt=""></div>
+                    <div class="balloon_two"><img width="100px" src="./images/balloon2.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="decorate_star star1" style="--t: 15s;"></div>
+        <div class="decorate_star star2" style="--t: 15.2s;"></div>
+        <div class="decorate_star star3" style="--t: 15.4s;"></div>
+        <div class="decorate_star star4" style="--t: 15.6s;"></div>
+        <div class="decorate_star star5" style="--t: 15.8s;"></div>
+        <div class="decorate_flower--one" style="--t: 15s;">
+            <img width="20" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_flower--two" style="--t: 15.3s;">
+            <img width="20" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_flower--three" style="--t: 15.6s;">
+            <img width="20" src="./images/decorate_flower.png" alt="">
+        </div>
+        <div class="decorate_bottom">
+            <img src="./images/decorate.png" alt="" width="100">
+        </div>
+        <div class="smiley__icon">
+            <img src="./images/smiley_icon.png" alt="" width="100">
+        </div>
+
+        <div class="boxMail">
+            <i class="fa-solid fa-xmark close-mail"></i>
+            <div class="boxMail-container">
+                <div class="card1">
+                    <div class="userImg"><img src="./images/unnamed.jpeg" alt=""></div>
+                    <h4 class="username">To: Alya Cantik (Dikit) 💖</h4>
+                    <h3>Happy Birthday</h3>
+                </div>
+                <div class="card2">
+                    <div class="card2-content">
+                        <h3>Untuk Kamu!</h3>
+                        <p id="typing-text" style="padding: 20px; font-family: 'Poppins', sans-serif; font-size: 14px; line-height: 1.6;"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="love-journey">
+    <h2 class="section-title">Since You Were Born ✨</h2>
+    <div class="counter-container">
+        <p>Alya sudah membawa kebahagiaan selama:</p>
+        <div id="timer">
+            <div class="time-box"><span id="days">0</span><p>Hari</p></div>
+            <div class="time-box"><span id="hours">0</span><p>Jam</p></div>
+            <div class="time-box"><span id="minutes">0</span><p>Menit</p></div>
+            <div class="time-box"><span id="seconds">0</span><p>Detik</p></div>
+        </div>
+        <p class="journey-footer">Terima kasih sudah lahir ke dunia ini... ❤️</p>
+    </div>
+</section>
+
+    <section class="power-stats">
+    <h2 class="section-title">Alya's Ultimate Stats &sum;</h2>
+    
+    <div class="chart-container">
+        <canvas id="alyaStatsChart"></canvas>
+    </div>
+
+    <div class="stats-detail">
+    <div class="detail-item">
+        <strong>🍀 Keberuntungan (100/100):</strong>
+        <p>Gimana nggak maksimal? Kan keberuntungan terbesarnya udah dapetin aku sebagai pasangannya! 😂</p>
+    </div>
+    
+    <div class="detail-item">
+        <strong>💃 Kepercayaan Diri (90/100):</strong>
+        <p>Gimana nggak pede, orangnya aja cantik mampus! Tiap jalan bareng berasa bawa bidadari. ✨</p>
+    </div>
+
+    <div class="detail-item">
+        <strong>🧘 Kesabaran (75/100):</strong>
+        <p>Sering ngambek kalau dijahilin, apalagi kalau nungguin jemputan, beuh... nggak bisa santai sama sekali! 🛵💨</p>
+    </div>
+
+    <div class="detail-item">
+        <strong>🦾 Kemandirian (80/100):</strong>
+        <p>Definisi wanita tangguh. Bisa handle semuanya sendiri, tapi tetep manja kalau lagi bareng aku.</p>
+    </div>
+    
+    <div class="detail-item">
+        <strong>🍕 Kontrol Emosi (75/100):</strong>
+        <p>Stabil kalau lagi senang, tapi kalau marah malah diam seribu bahasa. Dikira dukun ya bisa nebak pikiran?</p>
+    </div>
+</div>
+
+    <div class="stats-footer">
+        <div class="brief-info">
+            <p>Alya adalah karakter tier S+ dengan tingkat <strong>Keberuntungan</strong> dan <strong>kepercayaan diri</strong> maksimal. Meskipun <strong>Kontrol Emosi</strong>-nya kadang naik turun dan tingkat <strong>kesabaran</strong>-nya setipis tisu(75 udah dibonusin supya kkm), tapi <strong>Kemandirian</strong>-nya nggak perlu diragukan lagi!</p>
+        </div>
+        
+        <div class="rating-box">
+            <h3>Overall Rating: <span class="rank-sss">S+ Rank</span></h3>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p class="quote">"The most balanced and perfect soulmate."</p>
+        </div>
+    </div>
+</section>
+
+    <div class="gallery-section">
+        <h2 class="gallery-title">Our Memories</h2>
+    <div class="moments-grid">
+    <div class="moment-card">
+        <div class="polaroid">
+            <img src="./images/foto.jpg"> 
+            <p>First Date ✨</p>
+        </div>
+    </div>
+    <div class="moment-card">
+    <div class="polaroid">
+        <video autoplay loop muted playsinline>
+            <source src="./images/video2.mp4" type="video/mp4">
+        </video>
+        <div class="moment-info">
+            <p>Momen Kocak 😂</p>
+        </div>
+    </div>
+</div>
+    <div class="moment-card">
+    <div class="polaroid">
+        <img src="./images/fotoq.jpeg" alt="Himatika Moment">
+        <div class="moment-info">
+            <p>HIMATIKA &sum;</p>
+        </div>
+    </div>
+</div>
+    <div class="moment-card">
+        <div class="polaroid">
+            <img src="./images/foto3.jpeg">
+            <p>Partner in Everything 💗</p>
+        </div>
+    </div>
+    <div class="moment-card">
+    <div class="polaroid">
+        <video autoplay loop muted playsinline>
+            <source src="./images/video3.mp4" type="video/mp4">
+        </video>
+        <div class="moment-info">
+            <p>Momen Indah 🌅</p>
+        </div>
+    </div>
+</div>
+    <div class="moment-card">
+        <div class="polaroid">
+            <img src="./images/foto2.jpeg">
+            <p>The Best Version of Us🌸</p>
+        </div>
+    </div>
+</div>
+
+    <section class="gift-section">
+    <h2 class="gift-title">Satu lagi... Pilih kado buat kamu! 🎁</h2>
+    
+    <div class="gift-container">
+        <div class="gift-box" onclick="openGift(this, '🧴', 'Skincare Set')">
+            <img src="https://cdn-icons-png.flaticon.com/512/679/679821.png" alt="Box">
+            <div class="gift-item">🧴</div>
+            <div class="gift-name">Skincare Set</div>
+        </div>
+
+        <div class="gift-box" onclick="openGift(this, '💐', 'Bunga Cantik')">
+            <img src="https://cdn-icons-png.flaticon.com/512/679/679821.png" alt="Box">
+            <div class="gift-item">💐</div>
+            <div class="gift-name">Bunga Cantik</div>
+        </div>
+
+        <div class="gift-box" onclick="openGift(this, '👜', 'Tas Mewah')">
+            <img src="https://cdn-icons-png.flaticon.com/512/679/679821.png" alt="Box">
+            <div class="gift-item">👜</div>
+            <div class="gift-name">Tas Mewah</div>
+        </div>
+    </div>
+
+    <div id="final-surprise" style="display:none; margin-top: 50px;">
+        <div class="letter-final">
+            <p id="typing-text-final"></p>
+        </div>
+    </div>
+</section>
+
+    <audio id="birthday-song" loop>
+        <source src="musik.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+    const ctx = document.getElementById('alyaStatsChart').getContext('2d');
+new Chart(ctx, {
+    type: 'radar',
+    data: {
+        labels: ['Keberuntungan', 'Pede', 'Emosi', 'Mandiri', 'Sabar'],
+        datasets: [{
+            label: 'Alya Stats',
+            data: [100, 90, 75, 80, 70], // Sesuaikan angka kekuatannya di sini
+            backgroundColor: 'rgba(255, 120, 130, 0.3)',
+            borderColor: '#FF7882',
+            pointBackgroundColor: '#FF7882',
+            borderWidth: 2
+        }]
+    },
+    options: {
+        scales: {
+            r: {
+                angleLines: { display: true },
+                suggestedMin: 0,
+                suggestedMax: 100,
+                ticks: { display: false }
+            }
+        },
+        plugins: {
+            legend: { display: false }
+        }
+    }
+});
+
+        function updateBirthCounter() {
+    // GANTI TANGGAL DI BAWAH INI (Tahun-Bulan-Tanggal)
+    // Contoh: Jika lahir 15 Mei 2004, tulis "2004-05-15"
+    const birthDate = new Date("2003-03-11T00:00:00"); 
+    const now = new Date();
+    const diff = now - birthDate;
+
+    // Menghitung total hari dari lahir sampai sekarang
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / 1000 / 60) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    // Update angka ke layar
+    document.getElementById("days").innerText = days.toLocaleString(); // Pakai toLocaleString agar ada titik ribuan
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+}
+
+// Jalankan setiap detik
+setInterval(updateBirthCounter, 1000);
+updateBirthCounter();
+
+        function mulaiSemuanya() {
+    // 1. Panggil Suara Pop (Kita paksa play)
+    const popStart = document.getElementById('sfx-pop-start');
+    if (popStart) {
+        popStart.currentTime = 0; // Reset ke detik 0
+        popStart.play().catch(e => console.log("SFX Pop Error:", e));
+    }
+
+    // 2. Putar Lagu Utama
+    const lagu = document.getElementById('birthday-song');
+    if (lagu) {
+        lagu.play();
+        lagu.volume = 0.5;
+    }
+
+    // 3. Efek Visual
+    $("#overlay-start").fadeOut(1000);
+}
+        $(document).ready(function() {
+            // Update Tanggal Ultah Alya
+            let datetxt = "11 March";
+            let charArrDate = datetxt.split('');
+            let currentIndex = 0;
+            
+            setTimeout(function () {
+                let timeDatetxt = setInterval(function () {
+                    if (currentIndex < charArrDate.length) {
+                        $(".date__of__birth span").append(charArrDate[currentIndex]);
+                        currentIndex++;
+                    } else {
+                        $(".date__of__birth").prepend('<i class="fa-solid fa-star"></i>');
+                        $(".date__of__birth").append('<i class="fa-solid fa-star"></i>');
+                        clearInterval(timeDatetxt);
+                    }
+                }, 100);
+            }, 12000);
+
+            // Pesan Sarkas Romantis
+            let message = "Selamat ulang tahun sayang, manusia paling ribet aowkaowka 🥳. Ciee, yang umurnya nambah lagi, tapi tingkahnya masih kayak bocil. Makasih ya Alya sudah mau sabar sama aku, dan yang paling penting, makasih karena sudah lahir ke dunia. Soalnya kalau nggak ada kamu, aku nggak tau harus pusing gara-gara siapa lagi, yah walaupun hidup gua belum beres. Di umur 23 ini, kurangi ya ngambeknya, banyakin sabarnya menghadapi aku yang ganteng ini. Semoga makin cantik, pintar, makin kaya, dan yang paling penting... makin sabar, makin sabar, makin sabar banget, sabarnya ditingkatin lagi, pokoknya stok sabarnya harus unlimited ya! Disehatkan selalu ya 'beban' kesayanganku. Love you! ❤️";
+            let msgIndex = 0;
+
+            $("#btn__letter").click(function() {
+                const lagu = document.getElementById('birthday-song');
+                lagu.play();
+                lagu.volume = 0.5;
+
+                confetti({
+                    particleCount: 150,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+
+                $(".boxMail").addClass("active");
+
+                if(msgIndex === 0) {
+                    let typing = setInterval(function() {
+                        if(msgIndex < message.length) {
+                            $("#typing-text").append(message[msgIndex]);
+                            msgIndex++;
+                        } else {
+                            clearInterval(typing);
+                        }
+                    }, 50);
+                }
+            });
+
+            $(".close-mail").click(function() {
+                $(".boxMail").removeClass("active");
+            });
+        });
+
+        const pesanTerakhir = "Happy birthday Alya! 💖 Makasih udah pilih kadonya ya. Semoga di umur 23 ini kamu makin sabar, makin sukses, dan sehat selalu. Pokoknya doa terbaik buat kamu! ❤️";
+let indexKetik = 0;
+
+window.openGift = function(el, icon, name) {
+    // Sembunyikan box, munculkan icon hadiah
+    $(el).find('img').hide();
+    $(el).find('.gift-item').fadeIn();
+    $(el).find('.gift-name').fadeIn();
+    
+    // Confetti kecil
+    confetti({ particleCount: 40, spread: 50 });
+
+    // Munculkan surat di bawahnya
+    setTimeout(function() {
+        $("#final-surprise").fadeIn(1000);
+        mulaiNgetikSurat();
+    }, 1000);
+};
+
+function mulaiNgetikSurat() {
+    if (indexKetik < pesanTerakhir.length) {
+        document.getElementById("typing-text-final").innerHTML += pesanTerakhir.charAt(indexKetik);
+        indexKetik++;
+        setTimeout(mulaiNgetikSurat, 50);
+    }
+}
+
+function createFloatingHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart-floating");
+    
+    // Variasi icon hati (bisa campur-campur)
+    const hearts = ["❤️", "💖", "💗", "💕", "🌸"];
+    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+    
+    // Posisi horizontal acak
+    heart.style.left = Math.random() * 100 + "vw";
+    
+    // Ukuran acak biar natural
+    const size = Math.random() * 15 + 10 + "px";
+    heart.style.fontSize = size;
+    
+    // Durasi terbang acak (biar gak barengan semua)
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    
+    document.body.appendChild(heart);
+
+    // Hapus elemen setelah animasi selesai biar gak menumpuk di memori
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+// Jalankan fungsi setiap 300ms (sekitar 3 hati per detik)
+setInterval(createFloatingHeart, 300);
+
+// Tambahkan event click ke semua kartu memori
+document.querySelectorAll('.moment-card').forEach(card => {
+    card.addEventListener('click', function() {
+        const img = this.querySelector('img');
+        const video = this.querySelector('video');
+        const overlay = document.getElementById('lightbox-overlay');
+        const lImg = document.getElementById('lightbox-img');
+        const lVid = document.getElementById('lightbox-video');
+
+        overlay.style.display = 'flex';
+
+        if (img) {
+            lImg.src = img.src;
+            lImg.style.display = 'block';
+            lVid.style.display = 'none';
+        } else if (video) {
+            lVid.querySelector('source').src = video.querySelector('source').src;
+            lVid.load();
+            lVid.style.display = 'block';
+            lImg.style.display = 'none';
+        }
+    });
+});
+
+function closeLightbox() {
+    document.getElementById('lightbox-overlay').style.display = 'none';
+    document.getElementById('lightbox-video').pause();
+}
+
+    </script>
+
+<div id="lightbox-overlay" class="lightbox" onclick="closeLightbox()">
+    <span class="close-lightbox">&times;</span>
+    <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="">
+        <video id="lightbox-video" controls muted loop>
+            <source src="" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+<section class="closing-section">
+    <div class="final-wish">
+        <p>Sekali lagi, Happy Birthday Alya! 🌸</p>
+        <p>Semoga di usia ini, semua variabel kebahagiaan kamu bernilai maksimal dan segala urusan dipermudah. ✨</p>
+        <br>
+        <p>Kalau kamu suka websitenya, kasih tau aku ya!</p>
+    </div>
+    <a href="https://wa.me/6282196802409?text=Sayang! Makasih buat websitenya, aku suka banget! ❤️" class="wa-btn">
+        <i class="fab fa-whatsapp"></i> Klik untuk Peluk Virtual! 🤗
+    </a>
+    <p class="copyright">Made with ❤️ by Your Favorite Person &sum;</p>
+</section>
+
+</body>
+</html>

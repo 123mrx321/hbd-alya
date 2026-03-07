@@ -1572,3 +1572,31 @@ body {
     font-size: 0.7rem;
     color: #999;
 }
+
+/* Jurus Biar Rapi di HP */
+@media (max-width: 600px) {
+    .container {
+        width: 95%; /* Biar gak mepet banget ke pinggir layar */
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Ukuran font judul dikecilin dikit */
+    }
+
+    /* Biar Spider Chart gak kepotong */
+    canvas {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Gallery jadi 1 kolom aja biar gak sempit */
+    .memory-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .polaroid {
+        width: 100% !important; /* Foto memori biar full lebar HP */
+        margin: 10px 0;
+    }
+}
